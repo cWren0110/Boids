@@ -16,13 +16,14 @@ void setup() {
   flock = new Flock();
   // Add an initial set of boids into the system
   for (int i = 0; i < 150; i++) {
-    flock.addBoid(new Boid(width/2,height/2));
+    flock.addBoid(new Boid(width/2, height/2));
   }
 }
 
 void draw() {
-  background(50);
+  background(0);
   flock.run();
+  //saveFrame("frames/####.png");
 }
 
 // Add a new boid into the System
