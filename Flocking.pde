@@ -1,6 +1,8 @@
 /**
  * Flocking 
- * by Daniel Shiffman.  
+ * by Ethan Wade
+ 
+ * based on code by Daniel Shiffman.  
  * 
  * An implementation of Craig Reynold's Boids program to simulate
  * the flocking behavior of birds. Each boid steers itself based on 
