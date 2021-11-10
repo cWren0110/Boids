@@ -8,8 +8,9 @@ class Boid {
   float r;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
+  int visionDst;
 
-    Boid(float x, float y) {
+  Boid(float x, float y) {
     acceleration = new PVector(0, 0);
 
     // This is a new PVector method not yet implemented in JS
@@ -23,6 +24,7 @@ class Boid {
     r = 2.0;
     maxspeed = 2;
     maxforce = 0.03;
+    visionDst = 50;
   }
 
   void run(ArrayList<Boid> boids) {
@@ -83,10 +85,9 @@ class Boid {
 
   void render() {
     // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.heading2D() + radians(90);
-    // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
+    float theta = velocity.heading() + radians(90);
     
-    fill(200, 100);
+    fill(255);
     stroke(255);
     pushMatrix();
     translate(position.x, position.y);
@@ -124,6 +125,9 @@ class Boid {
         diff.div(d);        // Weight by distance
         steer.add(diff);
         count++;            // Keep track of how many
+        fill(#73F51E, 100 * (desiredseparation-d));
+        stroke(#73F51E, 100 * (desiredseparation-d));
+        line(position.x, position.y, other.position.x, other.position.y);
       }
     }
     // Average -- divide by how many
